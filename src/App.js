@@ -1,11 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
+import './App.css';
+import Home from './Home'
+// import axios from 'axios';
+// import * as yup from 'yup';
+// import schema from "./formValidation"
+import Form from './Form';
 
-const App = () => {
-  return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
-  );
+
+
+const initialFormValues = {
+  // Text Inputs
+  name: '',
+  email: '',
+  password: '', 
+  // checkboxes
+  termsOfService: false, 
 };
-export default App;
+
+const initialFormErrors = {
+  name: '',
+  email: '', 
+  password: '', 
+  termsOfService: false,
+}
+
+export default function App() {
+
+
+
+  return (
+      <Form/>
+  );
+}
