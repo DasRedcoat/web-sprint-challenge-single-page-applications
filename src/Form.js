@@ -1,9 +1,12 @@
 import React from "react";
-import * as yup from 'yup';
 
-export default function newForm(props) {
-    const { values, submit, change, disabled, errors } = props;
+export default function Form(props) {
+const { values, submit, change, disabled, errors } = props;
 
+const onSubmit = (evt) => {
+    evt.preventDefault();
+    submit();
+    };
   // States //
 
   // Axios //
@@ -29,14 +32,24 @@ export default function newForm(props) {
 
 const onChange = (event) => {  // onChange, an event,  perform: 
     const { name, value, type, checked } = event.target; // Targets the Keys that could change 
-    const valueToUse = type === "checkbox" ? checked : value; // "valueToUse is the variable, that checks if the type of input is a checkbox, and IF it is checked, it's 'value' is true, and matches. Therefore is allowed."
+    const valueToUse = type === "checkbox" ? checked : value; // "valueToUse is the variable, that checks if the type of input is a checkbox, and IF it is checked, it's 'value' is true, and matches. Therefore it is allowed to pass.
     change(name, valueToUse); // change the name and value to use as described above by the ternary operator. 
 };
 
     return (
-        <div className = ".Form-container">
+        <form>
+        <div className = "form-container">
             <h2>Build your own pizza!</h2>
             {/* <img src='Pizza'></img> */}
+        <label>
+          <h3>Who art thou?</h3>
+          <input
+            value={values.name}
+            onChange={onChange}
+            name="name"
+            type="text"
+          />
+        </label>
             <label>
                 <h3>Build your own pizza!</h3>
                 <h4>Choice of Size</h4>
@@ -49,6 +62,7 @@ const onChange = (event) => {  // onChange, an event,  perform:
                     <option value="I have the munchies">I have the munchies</option>
                 </select>
             </label>
+    {/*it works from here as of 1st push*/}
             <br/>
             <label>
             <h4>Choose a sauce!</h4>
@@ -88,7 +102,8 @@ const onChange = (event) => {  // onChange, an event,  perform:
                 />
             </label>
             <h3>Toppings</h3>
-            <label> Pepperoni
+            <label> 
+            Pepperoni
                 <input
                 type="checkbox"
                 name="pepperoni"
@@ -96,7 +111,8 @@ const onChange = (event) => {  // onChange, an event,  perform:
                 onChange={onChange}
                 />
             </label>
-            <label> Bacon
+            <label> 
+            Bacon
                 <input
                 type="checkbox"
                 name="bacon"
@@ -104,7 +120,8 @@ const onChange = (event) => {  // onChange, an event,  perform:
                 onChange={onChange}
                 />
             </label>
-            <label> Pineapple
+            <label> 
+            Pineapple
                 <input
                 type="checkbox"
                 name="pineapple"
@@ -112,7 +129,8 @@ const onChange = (event) => {  // onChange, an event,  perform:
                 onChange={onChange}
                 />
             </label>
-            <label> Onions
+            <label> 
+            Onions
                 <input
                 type="checkbox"
                 name="onions"
@@ -120,6 +138,8 @@ const onChange = (event) => {  // onChange, an event,  perform:
                 onChange={onChange}
                 />
             </label>
-        </div>
+            <button disabled={disabled}>Send my Zaa!</button>
+        </div> 
+        </form>
     )
 }
