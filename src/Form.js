@@ -36,6 +36,7 @@ const onChange = (event) => {  // onChange, an event,  perform:
     change(name, valueToUse); // change the name and value to use as described above by the ternary operator. 
 };
 
+
     return (
         <form>
         <div className = "form-container">
@@ -55,7 +56,7 @@ const onChange = (event) => {  // onChange, an event,  perform:
                 <h4>Choice of Size</h4>
                 <h5>Required*</h5>
                 <select>
-                    <option value="">- Select A Size! -</option>
+                    <option value="">How Hungry Are You?</option>
                     <option value="Small">Small</option>
                     <option value="Medium">Medium</option>
                     <option value="Large">Large</option>
@@ -140,6 +141,17 @@ const onChange = (event) => {  // onChange, an event,  perform:
             </label>
             <button disabled={disabled}>Send my Zaa!</button>
         </div> 
+        <div>
+        <label>
+          <h3>Special Instructions ( ͡ʘ ͜ʖ ͡ʘ) </h3>
+          <input
+            value={values.specialInstructions}
+            onChange={onChange}
+            name="name"
+            type="text"
+          />
+        </label>
+        </div>
         </form>
     )
 }
